@@ -1,6 +1,6 @@
 Student_id,question_id,answers
-nm1,1,"Text file: Text files are human readable forms. The extension of text file is .txt. No module is required for text file. The modes required for text files are r, w, a, r+, w+, a+. Ex:- “Note.txt”, “Example.txt”.
-Binary file: Binary files are non-human readable. Binary files have extension of .dat. Pickle module is required for binary files. The modes required for binary files are rb, wb, ab, rb+, wb+, Ex:- “"
+nm1,1,"Text file: Text files are human readable forms. The extension of text file is .txt. No module is required for text file. The modes required for text files are r, w, a, r+, w+, a+. Ex:- Note.txt, Example.txt.
+Binary file: Binary files are non-human readable. Binary files have extension of .dat. Pickle module is required for binary files. The modes required for binary files are rb, wb, ab, rb+, wb+, Ex:- "
 nm1,2,"A topology is defined as the arrangement in which various workstations/networks are arranged as per the required information transfer. 
 The types of topologies are:- 
 1. Bus topology:- It is the simplest topology in which all the workstations are arranged in the form of bus , arranged in linear form, and each workstation gets individual data.
@@ -9,7 +9,7 @@ The types of topologies are:-
 4. Ring topology:- All the workstations are connected in circular shape in the form of a ring. It is a very old type of topology, and it is not in the use in these days.
 5. Mesh topology:- It is the most complex type of topology. It consists of mix of two or more tree topology."
 nm1,3,"Database is defined as the collection of all the data types as folder.
-DDL: Data definition language. Commands – select, create, delete, update.
+DDL: Data definition language. Commands: select, create, delete, update.
 DML: Data manipulation language. Alter, drop."
 nm2,1,"Text file: .txt, readable.
 Binary file: .csv, not readable, stores information in the form of stream and bytes."
@@ -19,8 +19,8 @@ Tree topology:- multiple networks are connected to each other.
 Ring topology:- it forms ring connecting devices.
 Hybrid topology"
 nm2,3,"Database is the physical implementation of data stored, processed, organised in the form of collection of data.
-DML – Data manipulation language. Insert, delete, create
-DDL – Data definition language. Alter, drop, update"
+DML: Data manipulation language. Insert, delete, create
+DDL: Data definition language. Alter, drop, update"
 nm3,1,"Text file: Extension .txt. opens in a readable format. Methods like r, w, r+, w+, a etc are used. Ex: myfile.txt, super.txt.
 Binary file: Extension .dat. opens in a non readable format. Methods like rb, wb, ab, rb+, ab+, etc are used. Ex: myfile.dat, super.dat."
 nm3,2,"The different types of topologies are as below:- Star topology, Ring topology, Bus topology, Mesh topology, Tree topology.
@@ -31,8 +31,8 @@ Tree topology: There is one main server to which other systems are connected whi
 nm3,3,"A database in MYSQL language includes of tables in which DDL and DML commands are performed.
 DDL: create, alter. Data defn language
 DML: sum, avg, min, delete. Data manipulation language"
-nm4,1,"Text files: delimitor is used. Are human readable files. Extension of the file is ‘.txt’. modes used are r, w, r+, w+. Ex:- ‘note.txt’
-Binary files: no delimitor is used. Can’t be accessed by humans. Extension of file is ‘.dat’. modes used are rb+, wb+, etc. ex:- ‘example.dat’"
+nm4,1,"Text files: delimitor is used. Are human readable files. Extension of the file is '.txt'. modes used are r, w, r+, w+. Ex:- 'note.txt'
+Binary files: no delimitor is used. Can't be accessed by humans. Extension of file is '.dat'. modes used are rb+, wb+, etc. ex:- 'example.dat'"
 nm4,2,"Topology is a pictorial representation of arrangement of hosts or working stations based on the requirement.
 There are 5 types of topology:
 Star topology: Here the hosts are connected to a main node/working station. The network connection is handled by the main node. It is arranged in the form of a star.
@@ -42,14 +42,14 @@ Mesh topology: It is the most complex topology is used over large area."
 nm4,3,"Database:- It is collection of data types arranged in systematical manner.
 DDL: data definition language. Commands used are:- create, insert, select etc.
 DML: data manipulation language. Commands used are:- alter, drop."
-m1,1,"Text file: stores the info in the form of ASCII. Doesn’t contain info in the same format as data. Ex: .txt.
+m1,1,"Text file: stores the info in the form of ASCII. Doesn't contain info in the same format as data. Ex: .txt.
 Binary file: Stores the info in the form of bytes. Contains info in the same way as data. Ex:- Mp3 , Mp4."
 m1,2,"5 types of topology:
 Star topology: can be used to detect the main office.
 Bus topology, Mesh topology, Tree topology, Ring topology."
 m1,3,
 m2,1,"Text file: Extension - .txt. Text files are a stream of bytes and the execution is slower. Translation takes place. File access modes are written as r, r+.
-Binary file: Extension - .dat. The execution within binary files is faster as compared to the text files. No translation takes place. File access modes are written as including ‘b’ => rb, wb. Pickle module is used here."
+Binary file: Extension - .dat. The execution within binary files is faster as compared to the text files. No translation takes place. File access modes are written as including 'b' => rb, wb. Pickle module is used here."
 m2,2,"There are different types of Topologies:
 Star topology: Most used topology is the STAR Topology. It has a central hub/server connected to all the other computer networks. Used in big companies.
 Bus topology: Here in this Topology there is a central line of connection between the different networking devices.
