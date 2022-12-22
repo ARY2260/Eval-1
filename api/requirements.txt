@@ -18,3 +18,4 @@ altair
 annoy 
 datasets 
 tqdm
+flask_cors
