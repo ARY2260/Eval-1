@@ -1,0 +1,103 @@
+{% extends "qanda/base.html" %}
+{% load static %}
+{% block title %}Question{% endblock %}
+
+{% block content %}
+
+<div
+class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border items-center justify-center gap-[80px] text-center text-3xl"
+>
+<div class="w-full flex flex-col items-center justify-start">
+  <div class="self-stretch flex flex-col items-center justify-start">
+	<b class="self-stretch relative leading-[120%] inline-block"
+	  >Submit Questions</b
+	>
+  </div>
+</div>
+<div
+  class="w-[50%] flex flex-col items-center justify-start gap-[24px] text-left text-base"
+>
+  <div
+	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
+  >
+	<div class="self-stretch relative leading-[150%] inline-block">
+	  Question
+	</div>
+	<input
+	  class="[border:1px_solid_#000] bg-white self-stretch box-border flex flex-row p-[12px] items-center justify-start"
+	  type="text"
+	/>
+  </div>
+  <div
+	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
+  >
+	<div class="self-stretch relative leading-[150%] inline-block">
+	  Total Marks
+	</div>
+	<input
+	  class="[border:1px_solid_#000] bg-white self-stretch box-border flex flex-row p-[12px] items-center justify-start"
+	  type="text"
+	/>
+  </div>
+  <div
+	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
+  >
+	<div class="self-stretch relative leading-[150%] inline-block">
+	  Answer 1
+	</div>
+	<textarea
+	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
+	></textarea>
+  </div>
+  <div
+	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
+  >
+	<div class="self-stretch relative leading-[150%] inline-block">
+	  Answer 2
+	</div>
+	<textarea
+	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
+	></textarea>
+  </div>
+  <div
+	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
+  >
+	<div class="self-stretch relative leading-[150%] inline-block">
+	  Answer 3
+	</div>
+	<textarea
+	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
+	></textarea>
+  </div>
+  <div
+	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
+  >
+	<div class="self-stretch relative leading-[150%] inline-block">
+	  Answer 4
+	</div>
+	<textarea
+	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
+	></textarea>
+  </div>
+  <div
+	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
+  >
+	<div class="self-stretch relative leading-[150%] inline-block">
+	  Answer 5
+	</div>
+	<textarea
+	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
+	></textarea>
+  </div>
+  <button
+	class="cursor-pointer [border:1px_solid_#000] p-[12px_24px] bg-black box-border flex flex-row items-center justify-center"
+  >
+	<div
+	  class="relative text-base leading-[150%] font-roboto text-white text-left inline-block"
+	>
+	  Submit
+	</div>
+  </button>
+</div>
+</div>
+{% endblock %}

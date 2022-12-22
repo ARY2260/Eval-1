@@ -1,0 +1,86 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <!-- <link rel="stylesheet" href="./global.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+	{% tailwind_css %}
+  </head>
+  <body>
+    <div
+      class="relative bg-white w-full overflow-hidden flex flex-col items-start justify-start gap-[10px] text-left text-2xl text-black font-roboto"
+    >
+      <div
+        class="bg-white border-t-[0px_solid_#000] border-r-[0px_solid_#000] border-b-[1px_solid_#000] border-l-[0px_solid_#000] box-border w-full h-[62px] shrink-0 overflow-hidden flex flex-col p-[0px_64px] items-center justify-center"
+      >
+	  
+        <div class="self-stretch flex flex-row items-center justify-between">
+          <div class="flex flex-row items-start justify-start">
+			<a href="{% url 'home' %}">
+            <div class="flex flex-row items-start justify-start gap-[0px]">
+              <img
+                class="relative w-[54px] h-[51px] shrink-0 object-cover"
+                alt=""
+                src="{% static 'images/logo.png' %}"
+              /><b
+                class="relative leading-[120%] flex items-center w-[82px] h-[50px] shrink-0"
+                >chAI</b
+              >
+            </div>
+			</a>
+          </div>
+          <div class="bg-white flex flex-row items-center justify-center">
+            <div class="flex flex-row items-center justify-center ">
+			<a href="{% url 'question' %}">
+              <button
+                class="cursor-pointer [border:1px_solid_#000] p-[8px_20px] bg-[transparent] box-border flex flex-row items-center justify-center"
+              >
+                <div
+                  class="relative text-base leading-[150%] font-roboto text-black text-left inline-block"
+                >
+                  Teacher
+                </div>
+			  </button>
+			</a>
+			<div class="w-[20px]"> </div>
+			<a href="{% url 'answer' %}">
+			  <button
+                class="cursor-pointer [border:1px_solid_#000] p-[8px_20px] bg-black box-border flex flex-row items-center justify-center"
+                id="button1"
+              >
+                <div
+                  class="relative text-base leading-[150%] font-roboto text-white text-left inline-block"
+                >
+                  Student
+                </div>
+              </button>
+			</a>
+            </div>
+          </div>
+        </div>
+      </div>
+	  <div class="self-stretch relative bg-black h-[0.5px] shrink-0"></div>
+
+	  {% block content %}
+	  {% endblock %}
+        <div
+          class="self-stretch flex flex-col items-center justify-start gap-[32px] text-sm"
+        >
+          <div class="self-stretch relative bg-black h-[1px] shrink-0"></div>
+          <div class="self-stretch flex flex-row items-start justify-between">
+            <div class="relative leading-[150%] inline-block">
+              Made with &lt;3 by Team chAI
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
