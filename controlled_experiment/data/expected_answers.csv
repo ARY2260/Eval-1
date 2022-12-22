@@ -1,0 +1,33 @@
+question_id,answer1,answer2,answer3,answer4,answer5
+1,"Text files: Stores data in text only format. Uses delimiter end of lines- EOL. Human readable form. r,w,r+,w+,a are the modes used in text files. Text files will be with .txt extension. These are slower than binary files.
+Binary Files: Stores in the form of stream of bytes. There is no delimiter - EOL. Files are in .dat format. Not in human readable form. rb, ab+, rb+, wb+, wb. They are faster than text files.","Text files:
+1. Stores data in text only format 
+2. Uses delimiter end of lines- EOL
+3. Human readable form.
+4. r,w,r+,w+,a are the modes used in text files
+5. Text files will be with .txt extension.
+6. These are slower than binary files
+Binary Files:
+1.Stores in the form of stream of bytes.  
+2.There is no delimiter - EOL.
+3. Files are in .dat format.
+4. Not in human readable form 
+5. rb, ab+, rb+, wb+, wb
+6. They are faster than text files","Data is exclusively stored in text format in text files. EOL is used as a line breaker. human readable format The text file modes are r, w, r+, w, and a. The .txt extension will be present on text files. They take longer to open than binary files.
+Stores data in the form of a stream of bytes. No delimiter exists; EOL. The format of the files is. dat. Not in a format that can be read by humans. ab+, rb+, wb+, and wb. Over text files, they are quicker.",,
+2,"Pattern of interconnection of nodes is called topology.
+Bus topology: All the nodes are connected to single channel called bus. It has terminals to discard the packets.  Message will be broadcasted in this channel. Used in LAN i.e Ethernet cable connection.
+Ring Topology: nodes are connected to each other. Token will be used to send and receive the packets. It will be arranged in the form of ring. Now a days we are not using this topology.
+Star Topology: It is commonly used topology.  All the nodes are connected to central hub. Control will be more in this topology.  More secured topology. Most efficient topology. Down of any one node will not be interrupt the communication.
+Tree Topology: Combination of Bus and star topology. Complex topology.
+Mesh Topology: Used in WAN. More complex structure.","Topology is the term used to describe the way nodes are connected.
+Bus topology: A single channel called a bus connects all of the nodes. It features terminals that let you throw away packets. This channel will transmit the message. utilised for connecting LAN/Ethernet cables.
+Ring Topology: nodes are connected to each other. The packets will be sent and received using token. It will be set up in the shape of a ring. We no longer employ this topology now.
+Star Topology: This topology is frequently employed. The central hub is connected to each node. This topology will emphasize control more. improved topology security. highest-performing topology. The communication will not be interrupted if one node goes down.
+Tree Topology: Combination of Bus and star topology. intricate topology.
+Mesh Topology: Used in WAN. more intricate structure.",,,
+3,"Database: organized collection of structured information or data. Collection of inter related data.
+DDL: These are the commands used for defining, modifying or dropping table structure. Data definition language. Ex: Create, Drop, Alter.
+DML: These are the commands used for insert, modify or to delete records. Data Manipulation language. Ex: Insert, Update, Delete.","A database is a systematic collection of information or data that has been arranged. Data collection that is connected to one another.
+DDL commands: These are used to define, alter, or delete table structure. Data definition language. For example, Create, Drop, and Alter.
+DML commands: These are used to insert, modify, or delete records. Data Manipulation language. For example, insert, update, and delete.",,,
