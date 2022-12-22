@@ -1,0 +1,92 @@
+Student_id,question_id,answers
+nm1,1,"Text file: Text files are human readable forms. The extension of text file is .txt. No module is required for text file. The modes required for text files are r, w, a, r+, w+, a+. Ex:- “Note.txt”, “Example.txt”.
+Binary file: Binary files are non-human readable. Binary files have extension of .dat. Pickle module is required for binary files. The modes required for binary files are rb, wb, ab, rb+, wb+, Ex:- “"
+nm1,2,"A topology is defined as the arrangement in which various workstations/networks are arranged as per the required information transfer. 
+The types of topologies are:- 
+1. Bus topology:- It is the simplest topology in which all the workstations are arranged in the form of bus , arranged in linear form, and each workstation gets individual data.
+2. Star topology:- This topology is used in many administrative buildings for network connection. It involves of a router/source in the centre and all the workstations are connected to it, in the form of a star.
+3. Tree topology:- It is the topology in which all the workstations are interconnected to each other in the form of a tree. one workstation is connected to two workstations, and both are connected to another workstation.
+4. Ring topology:- All the workstations are connected in circular shape in the form of a ring. It is a very old type of topology, and it is not in the use in these days.
+5. Mesh topology:- It is the most complex type of topology. It consists of mix of two or more tree topology."
+nm1,3,"Database is defined as the collection of all the data types as folder.
+DDL: Data definition language. Commands – select, create, delete, update.
+DML: Data manipulation language. Alter, drop."
+nm2,1,"Text file: .txt, readable.
+Binary file: .csv, not readable, stores information in the form of stream and bytes."
+nm2,2,"Bus topology:- every computer and device is connected to single table.
+Star topology:- all devices are connected to one single hub.
+Tree topology:- multiple networks are connected to each other.
+Ring topology:- it forms ring connecting devices.
+Hybrid topology"
+nm2,3,"Database is the physical implementation of data stored, processed, organised in the form of collection of data.
+DML – Data manipulation language. Insert, delete, create
+DDL – Data definition language. Alter, drop, update"
+nm3,1,"Text file: Extension .txt. opens in a readable format. Methods like r, w, r+, w+, a etc are used. Ex: myfile.txt, super.txt.
+Binary file: Extension .dat. opens in a non readable format. Methods like rb, wb, ab, rb+, ab+, etc are used. Ex: myfile.dat, super.dat."
+nm3,2,"The different types of topologies are as below:- Star topology, Ring topology, Bus topology, Mesh topology, Tree topology.
+Star topology: In this topology, main server is connected to all hosts or workstation. All the data is stored in main server.
+Ring topology: In this kind of topology, systems are connected in the form of a ring. If one system fails, the entire topology fails to work. There is no main server.
+Bus topology: In this kind of topology, there is a main channel to which all the systems are connected. There can be a main server. If one host computer fails to respond, the topology remains undisturbed.
+Tree topology: There is one main server to which other systems are connected which further are connected to other workstations."
+nm3,3,"A database in MYSQL language includes of tables in which DDL and DML commands are performed.
+DDL: create, alter. Data defn language
+DML: sum, avg, min, delete. Data manipulation language"
+nm4,1,"Text files: delimitor is used. Are human readable files. Extension of the file is ‘.txt’. modes used are r, w, r+, w+. Ex:- ‘note.txt’
+Binary files: no delimitor is used. Can’t be accessed by humans. Extension of file is ‘.dat’. modes used are rb+, wb+, etc. ex:- ‘example.dat’"
+nm4,2,"Topology is a pictorial representation of arrangement of hosts or working stations based on the requirement.
+There are 5 types of topology:
+Star topology: Here the hosts are connected to a main node/working station. The network connection is handled by the main node. It is arranged in the form of a star.
+Bus topology: Here the work station are connected through a single network.
+Ring topology: Here the work stations are arranged in the form of a ring and there is main node in this topology. This is not preferred these days.
+Mesh topology: It is the most complex topology is used over large area."
+nm4,3,"Database:- It is collection of data types arranged in systematical manner.
+DDL: data definition language. Commands used are:- create, insert, select etc.
+DML: data manipulation language. Commands used are:- alter, drop."
+m1,1,"Text file: stores the info in the form of ASCII. Doesn’t contain info in the same format as data. Ex: .txt.
+Binary file: Stores the info in the form of bytes. Contains info in the same way as data. Ex:- Mp3 , Mp4."
+m1,2,"5 types of topology:
+Star topology: can be used to detect the main office.
+Bus topology, Mesh topology, Tree topology, Ring topology."
+m1,3,
+m2,1,"Text file: Extension - .txt. Text files are a stream of bytes and the execution is slower. Translation takes place. File access modes are written as r, r+.
+Binary file: Extension - .dat. The execution within binary files is faster as compared to the text files. No translation takes place. File access modes are written as including ‘b’ => rb, wb. Pickle module is used here."
+m2,2,"There are different types of Topologies:
+Star topology: Most used topology is the STAR Topology. It has a central hub/server connected to all the other computer networks. Used in big companies.
+Bus topology: Here in this Topology there is a central line of connection between the different networking devices.
+Tree topology: It is a combination of star and bus topology.
+Ring topology: All the devices connected in a Ring structure. The information flows through only one direction. Also very popular but has its own disadvantage.
+Mesh topology: Combination of every type of topology is known as a Mesh Topology. It is used in big network communication."
+m2,3,"A collection of data which can be stored, ordered (or) modified systematically in the form of relations and tuples is known as a database.
+DDL: Data Definition Language
+DML: Data manipulation language"
+m3,1,"Text file: Stores data in text only format .txt. Uses delimeter for EOL specification. It stores information in the form od ASCII (bytes). Uses special terminators for End of line (EOL). Ex: .txt.
+Binary file: Stores info in stream of bytes. Contains info in same format as the data. file content is returned raw. There is no delimiters at EOL. Ex: Mp3, Mp4."
+m3,2,"The different types of topologies are:
+Bus topology
+Star topology
+Ring topology
+Mesh topology: Bus + star
+Tree
+Bus topology: In this there is a main stream data cable which takes main flow of data and assigns to particular workstation.
+Star topology: In this there is one main head server which does the data assigning and management any info/transmission should pass through server.
+Tree topology: follows almost same principle as star topology but is more beauehified and data transmission can pass multiple servers.
+Ring topology: Data transmission is in 1D one direction for any data transfer in on is the destination workstation is opp to direction of Data transfer then it would have to take one full revolution transmitting data through all workstations.
+Mesh topology: Is a combination of all topologies. Best example is the Web/Internet."
+m3,3,"A data base is collection of data with one set of inter related data packs/ records fields.
+Data collection of multiple topics.
+DDL: Data definition language
+DML: Data manipulation language
+DDL: produces/changes/forms the structure of the data base. Ex: UPDATE, DELETE.
+Where as
+DML manipulates data inputs or records of the data (changes in the table or of the table) INSERT, DROP."
+m4,1,"Text file: In text file uses extension .txt. The data is store in the machine readable form. Can run only one pgrm at a time.
+Binary file: In binary file the extension used .dat. Can run multiple command. The data is stored in the same format."
+m4,2,"The different types of topology are:-
+Star topology
+Bus topology
+Tree topology
+Star topology: In this if the main server is damaged then the system stop working but if one system damaged the rest will world.
+Bus topology: In this the data from each system checking. If not mailable moves to the next system.
+Tree topology: It is the combination of both star and bus topology."
+m4,3,"DML: Data manipulation language. Insert, delete, append.
+DDL: Data definition language. Alter, drops, update."

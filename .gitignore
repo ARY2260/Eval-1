@@ -1,6 +1,9 @@
 # Virtual Environments #
 venv/
 
+# api keys #
+auth.yaml
+
 # Django #
 *.log
 *.pot
