@@ -7,7 +7,6 @@ class Test(models.Model):
     """
     Test table will be storing details regarding the test created by the user
     """
-
     title = models.CharField(verbose_name=_("Title"), help_text=_("Required"), max_length=255)
     description = models.TextField(verbose_name=_("Description"), help_text=_("Required"), max_length=500)
     created_at = models.DateTimeField(_("Created At"), auto_now_add=True, editable=False)
@@ -16,8 +15,8 @@ class Test(models.Model):
         verbose_name = _("Test")
         verbose_name_plural = _("Tests")
     
-    # def get_absolute_url(self):
-    #     return reverse("eval:test-detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("eval:test-detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.title
@@ -27,7 +26,6 @@ class Question(models.Model):
     """
     Question table will be storing details regarding the question created by the user
     """
-
     test_id = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name=_("Test"), help_text=_("Required"))
     question_text = models.TextField(verbose_name=_("Question"), help_text=_("Required"), max_length=500)
     expected_answer = models.TextField(verbose_name=_("Expected Answer"), help_text=_("Required"), max_length=500)
@@ -50,7 +48,6 @@ class Examinee(models.Model):
     """
     Examinee table will be storing details regarding the examinee for a given test
     """
-
     test_id = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name=_("Test"), help_text=_("Required"))
     name = models.CharField(verbose_name=_("Name"), help_text=_("Required"), max_length=255)
     email = models.EmailField(verbose_name=_("Email"), help_text=_("Required"), max_length=255)
@@ -75,7 +72,6 @@ class Submission(models.Model):
     """
     Submission table will be storing details regarding the submission of the examinee
     """
-
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name=_("Question"), help_text=_("Required"))
     examinee_id = models.ForeignKey(Examinee, on_delete=models.CASCADE, verbose_name=_("Examinee"), help_text=_("Required"))
     answer = models.TextField(verbose_name=_("Answer"), help_text=_("Required"), max_length=1000)
