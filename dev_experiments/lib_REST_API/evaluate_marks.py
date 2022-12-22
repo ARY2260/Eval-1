@@ -23,19 +23,24 @@ apiKey = get_api_key('auth.yaml')
 co = cohere.Client(apiKey)
 
 # temp
-database = pd.read_csv("Book1.csv", delimiter=',')
+try:
+    database = pd.read_csv("Book1.csv", delimiter=',')
+except:
+    database = pd.DataFrame()
 
 
 class EvaluateMarks():
     """
     """
 
-    def __init__(self, question_no, total_marks, query, gen_grammar=True, gen_trials=3, custom_toxic=True):
+    def __init__(self, question_no, total_marks, query, grammar=True, gen_grammar=True, gen_trials=3, custom_toxic=True, database=database):
         """
         """
+        self.database = database
         self.question_no = question_no
         self.total_marks = total_marks
         self.query = query
+        self.grammar = grammar
         self.gen_grammar = gen_grammar
         self.gen_trails = gen_trials
         self.custom_toxic = custom_toxic
@@ -62,7 +67,7 @@ class EvaluateMarks():
     def _semantic_check(self):
         """
         """
-        embeds = co.embed(texts=database[database.q_category == self.question_no][['answer1', 'answer2', 'answer3', 'answer4', 'answer5']].values.flatten().tolist(),
+        embeds = co.embed(texts=self.database[self.database.question_id == self.question_no][['answer1', 'answer2', 'answer3', 'answer4', 'answer5']].values.flatten().tolist(),
                           model='large',
                           truncate='LEFT').embeddings
 
@@ -126,10 +131,12 @@ class EvaluateMarks():
     def _grammar_check(self):
         """
         """
-        if self.gen_grammar:
-            return self._gen_grammar_check()
-        else:
-            return self._class_grammar_check()
+        if self.grammar:
+            if self.gen_grammar:
+                return self._gen_grammar_check()
+            else:
+                return self._class_grammar_check()
+        return 1.0
 
     def _default_toxic_check(self):
         """
@@ -196,10 +203,10 @@ class EvaluateMarks():
             score = self._jaccard_similarity(sentences[i], rest)
             similarities.append(score)
         duplication_ratio = sum(similarities)/(len(sentences)*0.08)
-
-        if duplication_ratio > 2.0:
+        # print(duplication_ratio)
+        if duplication_ratio > 2.25:
             dup_score = 2
-        elif duplication_ratio > 1.0:
+        elif duplication_ratio > 1.5:
             dup_score = 1
         else:
             dup_score = 0
@@ -251,9 +258,9 @@ class EvaluateMarks():
 
 
 #trial 1
-query = "The surface runoff frequently just disappears into sinkholes and swallow holes, where it flows as underground streams until emerging further downstream through a cave opening."
+# query = "The surface runoff frequently just disappears into sinkholes and swallow holes, where it flows as underground streams until emerging further downstream through a cave opening."
 
-eval = EvaluateMarks(1, 3, query=query)
-marks = eval.evaluate()
-print(marks)
-print(eval.run_checks())
+# eval = EvaluateMarks(1, 3, query=query)
+# marks = eval.evaluate()
+# print(marks)
+# print(eval.run_checks())
