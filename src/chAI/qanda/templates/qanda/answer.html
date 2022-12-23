@@ -50,6 +50,7 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 <div
   class="w-[768px] flex flex-col p-[16px_0px] box-border items-start justify-start gap-[16px]"
 >
+{% if submitted %}
   <div class="relative leading-[150%] inline-block">Results</div>
   <div class="self-stretch flex flex-row items-start justify-start">
 	<div
@@ -60,7 +61,7 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 		  class="relative rounded-[100px] bg-white [border:1px_solid_#000] box-border w-[20px] h-[20px] shrink-0 overflow-hidden hidden"
 		></div>
 		<div class="relative leading-[150%] inline-block">
-		  Total Marks:
+		  Total Marks: {{score}}
 		</div>
 	  </div>
 	  <div class="flex flex-row items-center justify-start gap-[12px]">
@@ -68,11 +69,12 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 		  class="relative rounded-[100px] bg-white [border:1px_solid_#000] box-border w-[20px] h-[20px] shrink-0 overflow-hidden hidden"
 		></div>
 		<div class="relative leading-[150%] inline-block">
-		  If Toxic:
+		  If Toxic: {{tag}}
 		</div>
 	  </div>
 	</div>
   </div>
+  {% endif %}
 </div>
 </div>
 

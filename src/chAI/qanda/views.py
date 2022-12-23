@@ -26,6 +26,24 @@ def questionPOST(question, totalMarks, Answer1, Answer2, Answer3, Answer4, Answe
 
     print(response.text.encode('utf8'))
 
+def answerPOST(question, answer):
+    url = "https://cohereapi.asimjawahir.repl.co/evaluate"
+
+    payload = {
+        "category": question,
+        "answer": answer
+    }
+
+    headers = {
+        'Content-Type': 'application/json',
+    }
+
+    response = requests.request("POST", url, headers=headers, json=payload)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    return {}
 
 def questionGET():
     url = "https://cohereapi.asimjawahir.repl.co/answers"
@@ -77,6 +95,8 @@ def question(request):
 def answer(request):
     form = AnswerSubmissionForm()
     submitted = False
+    score = 0
+    tag = ''
     if request.method == 'POST':
         form = AnswerSubmissionForm(request.POST)
         if form.is_valid():
@@ -85,13 +105,16 @@ def answer(request):
             question = form.cleaned_data['question']
             answer = form.cleaned_data['answer']
 
-            questionPOST(question, answer)
-
-            return HttpResponseRedirect('/answer?submitted=True')
+            res = answerPOST(question, answer)
+            score = res.get('score', 0)
+            tag = res.get('tag', '')
+            return HttpResponseRedirect(f'/answer?submitted=True&score={score}&tag={tag}')
     else:
         form = AnswerSubmissionForm()
         if 'submitted' in request.GET:
             submitted = True
+            score = request.GET.get('score', 0)
+            tag = request.GET.get('tag', '')
     
-    return render(request, 'qanda/answer.html', {'form': form, 'submitted': submitted})
+    return render(request, 'qanda/answer.html', {'form': form, 'submitted': submitted, 'score': score, 'tag': tag})
 # Create your views here.
