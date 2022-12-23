@@ -232,20 +232,20 @@ class EvaluateMarks():
         else:
             semantic_score, grammar_score, toxic_score, duplication_score = self.run_checks()
 
-        if toxic_score == 1.0:
-            return {'score': 0, 'tag': 'Toxic'}
+        # if toxic_score == 1.0:
+        #     return {'score': 0, 'tag': 'Toxic'}
 
         if duplication_score == 2:
             semantic_score += 0.2
 
-        elif duplication_score == 1:
-            semantic_score += 0.1
+        # elif duplication_score == 1:
+        #     semantic_score += 0.1
 
-        if semantic_score < 0.4:
+        if semantic_score < 0.45:
             scored_marks = self.total_marks
         elif semantic_score < 0.75:
             scored_marks = self.total_marks*(2/3)
-        elif semantic_score < 0.1:
+        elif semantic_score < 1:
             scored_marks = self.total_marks*(1/3)
         else:
             scored_marks = 0
