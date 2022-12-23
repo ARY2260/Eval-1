@@ -11,4 +11,5 @@ urlpatterns = [
 
     path('api/alltests', views.TestAndQuestionsView.as_view(), name='test_and_questions'),
     path('api/questions/<int:test_id>/', views.QuestionsByTestView.as_view(), name='questions_by_test'),
+    path('api/tests/<int:test_id>/', views.TestDetailView.as_view(), name='test_detail'),
 ]

@@ -60,3 +60,33 @@ class TestAndQuestionsView(APIView):
                     return Response(question_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             return Response(test_serializer.data, status=status.HTTP_201_CREATED)
         return Response(test_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TestDetailView(APIView):
+    queryset = Test.objects.all()
+
+    def get(self, request, test_id):
+        test = Test.objects.get(id=test_id)
+        test_serializer = TestSerializer(test)
+
+        questions = Question.objects.filter(test_id=test_id)
+        question_serializer = QuestionSerializer(questions, many=True)
+
+        response = {
+            'test': test_serializer.data,
+            'questions': question_serializer.data,
+            'examinees': [],
+        }
+
+        examinees = Examinee.objects.filter(test_id=test_id)
+        for examinee in examinees:
+            submissions = Submission.objects.filter(examinee_id=examinee.id)
+            examinee_serializer = ExamineeSerializer(examinee)
+            submission_serializer = SubmissionSerializer(submissions, many=True)
+            response['examinees'].append({
+                'examinee': examinee_serializer.data,
+                'submissions': submission_serializer.data
+            })        
+        return Response(response, status=status.HTTP_200_OK)
+
+    
