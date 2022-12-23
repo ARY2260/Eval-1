@@ -12,7 +12,7 @@ class Answers(db.Model):
   answer5: str
 
   question: str
-
+  totalMarks: int
   q_category = db.Column(db.Integer, primary_key=True)
   answer1 = db.Column(db.String(255), unique=False, nullable=False)
   answer2 = db.Column(db.String(255), unique=False, nullable=False)
@@ -20,13 +20,17 @@ class Answers(db.Model):
   answer4 = db.Column(db.String(255), unique=False, nullable=False)
   answer5 = db.Column(db.String(255), unique=False, nullable=False)
   question = db.Column(db.String(255), unique=False, nullable=False)
+  totalMarks = db.Column(db.Integer, unique=False, nullable=False)
 
-  def __init__(self, answer1, answer2, answer3, answer4, answer5, question):
+  def __init__(self, answer1, answer2, answer3, answer4, answer5, question,
+               totalMarks):
     self.answer1 = answer1
     self.answer2 = answer2
     self.answer3 = answer3
     self.answer4 = answer4
     self.answer5 = answer5
+
+    self.totalMarks = totalMarks
 
     self.question = question
 
@@ -34,8 +38,14 @@ class Answers(db.Model):
     return str(self.q_category)
 
 
-def create(answer1, answer2, answer3, answer4, answer5, question):
-  answerMain = Answers(answer1=answer1, answer2=answer2, answer3=answer3, answer4=answer4, answer5=answer5, question=question)
+def create(answer1, answer2, answer3, answer4, answer5, question, totalMarks):
+  answerMain = Answers(answer1=answer1,
+                       answer2=answer2,
+                       answer3=answer3,
+                       answer4=answer4,
+                       answer5=answer5,
+                       question=question,
+                       totalMarks=totalMarks)
   db.session.add(answerMain)
   db.session.commit()
 
