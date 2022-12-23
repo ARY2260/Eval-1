@@ -7,7 +7,7 @@ const Footer = () => {
     <footer class="p-4 sm:p-4 bg-teal-500">
       <div class="sm:flex sm:items-center sm:justify-between">
         <a href="#" class="flex items-center mb-4 sm:mb-0">
-          <Image src={logo} class="mr-3 h-8 w-[60px] h-[60px]" alt="" />
+          <Image src={logo} class="mr-3 h-8 w-[40px] h-[40px]" alt="" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Eval</span>
         </a>
         <span class="text-sm text-gray-500 sm:text-center dark:text-white">© 2022 Eval™. All Rights Reserved.</span>
