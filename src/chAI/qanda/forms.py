@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
-from .models import QuestionSubmission
-
+from .models import QuestionSubmission, AnswerSubmission
+import requests
 
 class QuestionSubmissionForm(ModelForm):
     class Meta:
@@ -33,6 +33,46 @@ class QuestionSubmissionForm(ModelForm):
         #     'Answer5': 1000,
         # }
 
+def getChoices():
+    url = "https://cohereapi.asimjawahir.repl.co/answers"
+
+    response = requests.get(url)
+    questions = []
+    if response.status_code == 200:
+        data = response.json()
+        for item in data:
+            questionTuple = (item['q_category'], item['question'])
+            questions.append(questionTuple)
+        return questions
+    return []
+
+# class AnswerSubmissionForm(ModelForm):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         val = getChoices()
+#         print(val)
+#         self.fields['question'].queryset  = val
+#     class Meta:
+#         model = AnswerSubmission
+#         fields = ['question', 'answer']
+#         labels = {
+#             'question': 'Question',
+#             'answer': 'Answer',
+#         }
+#         widgets = {
+#             'question': forms.Select(attrs={'class': 'form-control [border:1px_solid_#000] bg-white self-stretch box-border flex flex-row p-[12px] items-center justify-start w-full'}),
+#             'answer': forms.Textarea(attrs={'class': 'form-control [border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start'}),
+#         }
+
 class AnswerSubmissionForm(forms.Form):
-    class Meta:
-        fields = []
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['question'] = forms.ChoiceField(
+            choices=getChoices(), # this is the function call
+            widget=forms.Select(attrs={'class': 'form-control [border:1px_solid_#000] bg-white self-stretch box-border flex flex-row p-[12px] items-center justify-start w-full'})
+        )
+        self.fields['answer'] = forms.CharField(
+            widget=forms.Textarea(attrs={'class': 'form-control [border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start'})
+        )
+
+

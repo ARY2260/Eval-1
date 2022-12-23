@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import QuestionSubmissionForm
+from .forms import QuestionSubmissionForm, AnswerSubmissionForm
 import requests
+
+
 def questionPOST(question, totalMarks, Answer1, Answer2, Answer3, Answer4, Answer5):
     url = "https://cohereapi.asimjawahir.repl.co/answers"
 
@@ -70,8 +72,26 @@ def question(request):
             submitted = True
 
     return render(request, 'qanda/question.html', {'form': form, 'submitted': submitted})
+
+
 def answer(request):
-    if request.method == 'GET':
-        questionGET()
-    return render(request, 'qanda/answer.html', {'questions': questionGET()})
+    form = AnswerSubmissionForm()
+    submitted = False
+    if request.method == 'POST':
+        form = AnswerSubmissionForm(request.POST)
+        if form.is_valid():
+            print("Valid")
+
+            question = form.cleaned_data['question']
+            answer = form.cleaned_data['answer']
+
+            questionPOST(question, answer)
+
+            return HttpResponseRedirect('/answer?submitted=True')
+    else:
+        form = AnswerSubmissionForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    
+    return render(request, 'qanda/answer.html', {'form': form, 'submitted': submitted})
 # Create your views here.
