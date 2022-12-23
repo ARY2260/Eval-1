@@ -25,8 +25,27 @@ def questionPOST(question, totalMarks, Answer1, Answer2, Answer3, Answer4, Answe
     print(response.text.encode('utf8'))
 
 
+def questionGET():
+    url = "https://cohereapi.asimjawahir.repl.co/answers"
+
+    response = requests.get(url)
+    questions = []
+    if response.status_code == 200:
+        data = response.json()
+        for item in data:
+            questionDict = {
+                "question": item['question'],
+                "q_category": item['q_category'],
+            }
+            questions.append(questionDict)
+        return questions
+    return []
+
+
 def home(request):
     return render(request, 'qanda/dashbaord.html')
+
+
 def question(request):
     submitted = False
     if request.method == 'POST':
@@ -52,5 +71,7 @@ def question(request):
 
     return render(request, 'qanda/question.html', {'form': form, 'submitted': submitted})
 def answer(request):
-    return render(request, 'qanda/answer.html')
+    if request.method == 'GET':
+        questionGET()
+    return render(request, 'qanda/answer.html', {'questions': questionGET()})
 # Create your views here.

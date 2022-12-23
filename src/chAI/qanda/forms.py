@@ -32,3 +32,7 @@ class QuestionSubmissionForm(ModelForm):
         #     'Answer4': 1000,
         #     'Answer5': 1000,
         # }
+
+class AnswerSubmissionForm(forms.Form):
+    class Meta:
+        fields = []
