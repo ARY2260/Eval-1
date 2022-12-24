@@ -117,4 +117,11 @@ def answer(request):
             tag = request.GET.get('tag', '')
     
     return render(request, 'qanda/answer.html', {'form': form, 'submitted': submitted, 'score': score, 'tag': tag})
+
+def test(request):
+    return render(request, 'qanda/test.html')
+
+def questionBank(request):
+    questions = questionGET()
+    return render(request, 'qanda/questionBank.html', {'questions': questions})
 # Create your views here.
