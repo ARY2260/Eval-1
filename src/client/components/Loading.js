@@ -1,6 +1,6 @@
 const Loading = () => {
   return (
-    <div class="flex items-center justify-center">
+    <div class="flex h-screen items-center justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-red-600 animate-spin" fill="none" viewBox="0 0 24 24"
           stroke="teal">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
