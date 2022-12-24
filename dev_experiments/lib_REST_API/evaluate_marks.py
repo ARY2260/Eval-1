@@ -8,6 +8,9 @@ import yaml
 from copy import deepcopy
 warnings.filterwarnings('ignore')
 pd.set_option('display.max_colwidth', None)
+from nltk.stem import porter
+import numpy as np
+from gensim.parsing.preprocessing import remove_stopwords
 
 # get api key function
 def get_api_key(filename):
@@ -33,7 +36,7 @@ class EvaluateMarks():
     """
     """
 
-    def __init__(self, question_no, total_marks, query, grammar=True, gen_grammar=True, gen_trials=3, custom_toxic=True, database=database):
+    def __init__(self, question_no, total_marks, query, grammar=True, gen_grammar=True, gen_trials=3, custom_toxic=True, database=database, n_trees=10):
         """
         """
         self.database = database
@@ -44,6 +47,7 @@ class EvaluateMarks():
         self.gen_grammar = gen_grammar
         self.gen_trails = gen_trials
         self.custom_toxic = custom_toxic
+        self.n_trees = n_trees
         self.toxic_examples = [
             Example("you are hot trash", "Toxic"),
             Example("go to hell", "Toxic"),
@@ -67,7 +71,8 @@ class EvaluateMarks():
     def _semantic_check(self):
         """
         """
-        embeds = co.embed(texts=self.database[self.database.question_id == self.question_no][['answer1', 'answer2', 'answer3', 'answer4', 'answer5']].values.flatten().tolist(),
+        exp_answers = self.database[self.database.question_id == self.question_no][['answer1', 'answer2', 'answer3', 'answer4', 'answer5']].values.flatten().tolist()
+        embeds = co.embed(texts=exp_answers,
                           model='large',
                           truncate='LEFT').embeddings
 
@@ -76,7 +81,7 @@ class EvaluateMarks():
         # Add all the vectors to the search index
         for i in range(len(embeds)):
             search_index.add_item(i, embeds[i])
-        search_index.build(10)  # 10 trees
+        search_index.build(self.n_trees)  # 10 trees
         search_index.save('temp2.ann')
 
         # process user input
@@ -87,7 +92,8 @@ class EvaluateMarks():
                                                           include_distances=True)
 
         min_distance = min(similar_item_ids[1])
-        return min_distance
+        set_subset_value = self._set_subset_test(self.query, exp_answers[similar_item_ids[0][0]])
+        return min_distance, set_subset_value
 
     def _gen_grammar_check(self):
         """
@@ -190,6 +196,27 @@ class EvaluateMarks():
         # Calculate Jaccard similarity score
         # using length of intersection set divided by length of union set
         return float(len(intersection)) / len(union)
+    
+    def _set_subset_test(self, doc1, doc2): 
+        sn = porter.PorterStemmer()
+        if(doc1.strip() == '' or doc2.strip() == ''):
+            return 0.0
+
+        doc1 = remove_stopwords(doc1)
+        doc2 = remove_stopwords(doc2)
+        # List the unique words in a document
+        words_doc1 = set(np.vectorize(sn.stem)(np.asarray(doc1.lower().split())))
+        words_doc2 = set(np.vectorize(sn.stem)(np.asarray(doc2.lower().split())))
+
+        # Find the intersection of words list of doc1 & doc2
+        intersection = words_doc1.intersection(words_doc2)
+
+        # Find the union of words list of doc1 & doc2
+        union = words_doc1.union(words_doc2)
+
+        # Calculate Jaccard similarity score 
+        # using length of intersection set divided by length of union set
+        return float(len(intersection)) / len(union)
 
     def _duplication_check(self):
         """
@@ -217,44 +244,78 @@ class EvaluateMarks():
         """
         if hasattr(self,'check_results'):
             return self.check_results
-        s_score = self._semantic_check()
+        s_score, sub_score = self._semantic_check()
         g_score = self._grammar_check()
         t_score = self._toxic_check()
         d_score = self._duplication_check()
-        self.check_results = [s_score, g_score, t_score, d_score]
+        self.check_results = [s_score, sub_score, g_score, t_score, d_score]
         return self.check_results
 
     def evaluate(self):
         """
         """
         if hasattr(self,'check_results'):
-            semantic_score, grammar_score, toxic_score, duplication_score = self.check_results
+            semantic_score, subset_score, grammar_score, toxic_score, duplication_score = self.check_results
         else:
-            semantic_score, grammar_score, toxic_score, duplication_score = self.run_checks()
-
-        # if toxic_score == 1.0:
-        #     return {'score': 0, 'tag': 'Toxic'}
+            semantic_score, subset_score, grammar_score, toxic_score, duplication_score = self.run_checks()
 
         if duplication_score == 2:
             semantic_score += 0.2
 
-        # elif duplication_score == 1:
-        #     semantic_score += 0.1
+        elif duplication_score == 1:
+            semantic_score += 0.1
+
+        ######### Default 3 parts fit ##########
+        # if semantic_score < 0.45:
+        #     scored_marks = self.total_marks
+        # elif semantic_score < 0.75:
+        #     scored_marks = self.total_marks*(2/3)
+        # elif semantic_score < 1:
+        #     scored_marks = self.total_marks*(1/3)
+        # else:
+        #     scored_marks = 0
+        ###################################
+
+        ########## 5 part fit ##############
+        # if semantic_score < 0.45:
+        #     scored_marks = self.total_marks
+        # elif semantic_score < 0.65:
+        #     scored_marks = self.total_marks*(1/2)
+        # elif semantic_score < 0.85:
+        #     scored_marks = self.total_marks*(1/3)
+        # elif semantic_score < 1:
+        #     scored_marks = self.total_marks*(1/5)
+        # else:
+        #     scored_marks = 0
+        ####################################
+
+        ########## 4 part fit ##############
+        print(subset_score)
+        if semantic_score < 0.65 and subset_score >= 0.2:
+            print("sub_satisfy")
+            semantic_score -= 0.25
 
         if semantic_score < 0.45:
             scored_marks = self.total_marks
-        elif semantic_score < 0.75:
-            scored_marks = self.total_marks*(2/3)
+        elif semantic_score < 0.65:
+            scored_marks = self.total_marks*(3/4)
+        elif semantic_score < 0.8:
+            scored_marks = self.total_marks*(1/2)
         elif semantic_score < 1:
-            scored_marks = self.total_marks*(1/3)
+            scored_marks = self.total_marks*(1/4)
         else:
             scored_marks = 0
+        ###################################
 
         if grammar_score == 0.0:
             scored_marks = scored_marks-1 if scored_marks > 2 else scored_marks-0.5
 
         scored_marks = max(0, scored_marks)
-        return {'score': scored_marks, 'tag': 'Not Toxic'}
+        if toxic_score == 1.0:
+            tag = 'Toxic'
+        else:
+            tag = 'Non-Toxic'
+        return {'score': scored_marks, 'tag': tag}
 
 
 #trial 1
