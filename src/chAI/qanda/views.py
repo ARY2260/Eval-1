@@ -63,6 +63,26 @@ def questionGET():
         return questions
     return []
 
+def questionGETV2():
+    url = "https://cohereapi.asimjawahir.repl.co/answers"
+
+    response = requests.get(url)
+    questions = []
+    if response.status_code == 200:
+        data = response.json()
+        for item in data:
+            questionDict = {
+                "question": item['question'],
+                "q_category": item['q_category'],
+                "answer1": item['answer1'],
+                "answer2": item['answer2'],
+                "answer3": item['answer3'],
+                "answer4": item['answer4'],
+                "answer5": item['answer5'],
+            }
+            questions.append(questionDict)
+        return questions
+    return []
 
 def home(request):
     return render(request, 'qanda/dashbaord.html')
@@ -133,6 +153,6 @@ def test(request):
     return render(request, 'qanda/test.html', {'tests': tests, 'questions': questions})
 
 def questionBank(request):
-    questions = questionGET()
+    questions = questionGETV2()
     return render(request, 'qanda/questionBank.html', {'questions': questions})
 # Create your views here.
