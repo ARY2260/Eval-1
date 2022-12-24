@@ -16,7 +16,7 @@ git clone https://github.com/MistaAsh/Eval.git
 
 3. Navigate to the src directory:
 ```bash
-cd <repository>/src
+cd Eval/src
 ```
 
 4. Install the required Python packages:
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 5. Navigate to the chAI directory:
 ```bash
-cd <repository>/chAI
+cd Eval/src/chAI
 ```
 
 6. Migrate the database
