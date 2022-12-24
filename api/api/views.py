@@ -203,9 +203,9 @@ class EvaluateMarks():
       similarities.append(score)
     duplication_ratio = sum(similarities) / (len(sentences) * 0.08)
 
-    if duplication_ratio > 2.0:
+    if duplication_ratio > 2.25:
       dup_score = 2
-    elif duplication_ratio > 1.0:
+    elif duplication_ratio > 1.5:
       dup_score = 1
     else:
       dup_score = 0
@@ -232,29 +232,32 @@ class EvaluateMarks():
       semantic_score, grammar_score, toxic_score, duplication_score = self.run_checks(
       )
 
-    if toxic_score == 1.0:
-      return {'score': 0, 'tag': 'Toxic'}
-
     if duplication_score == 2:
       semantic_score += 0.2
 
     elif duplication_score == 1:
       semantic_score += 0.1
 
-    if semantic_score < 0.4:
-      scored_marks = self.totalMarks
-    elif semantic_score < 0.75:
-      scored_marks = self.totalMarks * (2 / 3)
-    elif semantic_score < 0.1:
-      scored_marks = self.totalMarks * (1 / 3)
+    if semantic_score < 0.45:
+        scored_marks = self.total_marks
+    elif semantic_score < 0.65:
+        scored_marks = self.total_marks*(3/4)
+    elif semantic_score < 0.8:
+        scored_marks = self.total_marks*(1/2)
+    elif semantic_score < 1:
+        scored_marks = self.total_marks*(1/4)
     else:
-      scored_marks = 0
+        scored_marks = 0
 
     if grammar_score == 0.0:
       scored_marks = scored_marks - 1 if scored_marks > 2 else scored_marks - 0.5
 
     scored_marks = max(0, scored_marks)
-    return {'score': scored_marks, 'tag': 'Not Toxic'}
+    if toxic_score == 1.0:
+        tag = 'Toxic'
+    else:
+        tag = 'Non-Toxic'
+    return {'score': scored_marks, 'tag': tag}
 
 
 @app.route('/answers', methods=['POST'])
