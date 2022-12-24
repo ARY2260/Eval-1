@@ -14,19 +14,24 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	>
   </div>
 </div>
+
 <div
   class="w-[50%] flex flex-col items-center justify-start gap-[24px] text-left text-base"
 >
+<form action="" method=POST class="w-full">
+	{% csrf_token %}
+	<!-- {{ form.as_p }} -->
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
   >
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Question
 	</div>
-	<input
+	<!-- <input
 	  class="[border:1px_solid_#000] bg-white self-stretch box-border flex flex-row p-[12px] items-center justify-start"
 	  type="text"
-	/>
+	/> -->
+	{{ form.question }}
   </div>
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
@@ -34,10 +39,11 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Total Marks
 	</div>
-	<input
+	<!-- <input
 	  class="[border:1px_solid_#000] bg-white self-stretch box-border flex flex-row p-[12px] items-center justify-start"
 	  type="text"
-	/>
+	/> -->
+	{{ form.totalMarks }}
   </div>
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
@@ -45,9 +51,10 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Answer 1
 	</div>
-	<textarea
+	<!-- <textarea
 	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
-	></textarea>
+	></textarea> -->
+	{{ form.Answer1 }}
   </div>
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
@@ -55,9 +62,10 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Answer 2
 	</div>
-	<textarea
+	<!-- <textarea
 	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
-	></textarea>
+	></textarea> -->
+	{{ form.Answer2 }}
   </div>
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
@@ -65,9 +73,10 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Answer 3
 	</div>
-	<textarea
+	<!-- <textarea
 	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
-	></textarea>
+	></textarea> -->
+	{{ form.Answer3 }}
   </div>
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
@@ -75,9 +84,10 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Answer 4
 	</div>
-	<textarea
+	<!-- <textarea
 	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
-	></textarea>
+	></textarea> -->
+	{{ form.Answer4 }}
   </div>
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
@@ -85,19 +95,15 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Answer 5
 	</div>
-	<textarea
+	<!-- <textarea
 	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
-	></textarea>
+	></textarea> -->
+	{{ form.Answer5 }}
   </div>
-  <button
-	class="cursor-pointer [border:1px_solid_#000] p-[12px_24px] bg-black box-border flex flex-row items-center justify-center"
-  >
-	<div
-	  class="relative text-base leading-[150%] font-roboto text-white text-left inline-block"
-	>
-	  Submit
-	</div>
-  </button>
+  <div class="h-[20px]"></div>
+  <input type="submit" value="Submit" class="cursor-pointer [border:1px_solid_#000] p-[12px_24px] bg-black box-border flex flex-row items-center justify-center text-white">
+  </input>
+</form>
 </div>
 </div>
 {% endblock %}

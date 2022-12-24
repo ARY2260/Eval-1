@@ -17,16 +17,19 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 <div
   class="w-[50%] flex flex-col items-center justify-start gap-[24px] text-left text-base"
 >
+<form action="" method=POST class="w-full">
+	{% csrf_token %}
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
   >
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Question
 	</div>
-	<input
+	<!-- <input
 	  class="[border:1px_solid_#000] bg-white self-stretch box-border flex flex-row p-[12px] items-center justify-start"
 	  type="text"
-	/>
+	/> -->
+	{{form.question}}
   </div>
   <div
 	class="self-stretch flex flex-col items-start justify-start gap-[8px]"
@@ -34,23 +37,22 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	<div class="self-stretch relative leading-[150%] inline-block">
 	  Answer
 	</div>
-	<textarea
+	{{form.answer}}
+	<!-- <textarea
 	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
-	></textarea>
+	></textarea> -->
   </div>
-  <button
-	class="cursor-pointer [border:1px_solid_#000] p-[12px_24px] bg-black box-border flex flex-row items-center justify-center"
-  >
-	<div
-	  class="relative text-base leading-[150%] font-roboto text-white text-left inline-block"
-	>
-	  Submit
-	</div>
-  </button>
+  {% if not submitted %}
+  <div class="h-[20px]"></div>
+  <input type="submit" value="Submit" class="cursor-pointer [border:1px_solid_#000] p-[12px_24px] bg-black box-border flex flex-row items-center justify-center text-white">
+  </input>
+  {% endif %}
+  </form>
 </div>
 <div
   class="w-[768px] flex flex-col p-[16px_0px] box-border items-start justify-start gap-[16px]"
 >
+{% if submitted %}
   <div class="relative leading-[150%] inline-block">Results</div>
   <div class="self-stretch flex flex-row items-start justify-start">
 	<div
@@ -61,7 +63,7 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 		  class="relative rounded-[100px] bg-white [border:1px_solid_#000] box-border w-[20px] h-[20px] shrink-0 overflow-hidden hidden"
 		></div>
 		<div class="relative leading-[150%] inline-block">
-		  Total Marks:
+		  Total Marks: {{score}}
 		</div>
 	  </div>
 	  <div class="flex flex-row items-center justify-start gap-[12px]">
@@ -69,11 +71,12 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 		  class="relative rounded-[100px] bg-white [border:1px_solid_#000] box-border w-[20px] h-[20px] shrink-0 overflow-hidden hidden"
 		></div>
 		<div class="relative leading-[150%] inline-block">
-		  If Toxic:
+		  If Toxic: {{tag}}
 		</div>
 	  </div>
 	</div>
   </div>
+  {% endif %}
 </div>
 </div>
 
