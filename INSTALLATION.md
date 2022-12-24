@@ -1,62 +1,42 @@
-## [Eval](https://foobar.com)
+## Eval
 
-Fork and clone the repository from GitHub.
+# Installation Instructions For Website
+
+1. Make sure you have Git, Python, and pip installed on your machine. If you don't have these tools installed, you can follow the instructions at the following links:
+
+- Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- Python: https://realpython.com/installing-python/
+- pip: https://pip.pypa.io/en/stable/installing/
+
+2. Clone the repository:
+
 ```bash
-git clone https://github.com/<your-username-here>/Eval.git
+git clone https://github.com/MistaAsh/Eval.git
 ```
 
-Traverse to the directory where the repository is cloned.
+3. Navigate to the src directory:
 ```bash
-cd WikiExtractor
+cd <repository>/src
 ```
 
-<br>
-
-### Website Server
-Built on Django Rest Framework, the server needs **Python 3.8 and above** installed on your system to contribute and work on the server-side instances. If you do not have Python installed, you can install it from [here](https://www.python.org/downloads/).
-
-Move into the `src` folder
+4. Install the required Python packages:
 ```bash
-cd src
+pip install -r requirements.txt
 ```
 
-Install the various dependencies to run the server
+5. Navigate to the chAI directory:
 ```bash
-# Create a virtual environment 
-python3 -m venv <name-of-virtual-environment>
-source <name-of-virtual-environment>/bin/activate
-
-# Install the dependencies
-pip3 install -r requirements.txt
+cd <repository>/chAI
 ```
 
-Activate the virtual environment
+6. Migrate the database
 ```bash
-source <name-of-virtual-environment>/bin/activate
+python manage.py migrate
 ```
 
-Move into the `api` folder and start the server
+6. Run the server
 ```bash
-cd api
-python3 manage.py runserver
+python manage.py runserver
 ```
 
-<br>
-
-### Client Website
-Built on NextJS, the client webapp requires **NodeJS 12 and above** installed on your system to contribute and work on the client-side instances. If you do not have NodeJS installed, you can install it from [here](https://nodejs.org/en/download/).
-
-Move into the `src/client` folder
-```bash
-cd src/client
-```
-
-Install the various dependencies to run the server
-```bash
-npm install
-```
-
-Start the client
-```bash
-npm run dev
-```
+The server will now be running at http://localhost:8000/.
