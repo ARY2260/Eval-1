@@ -5,7 +5,7 @@ import { logo } from '../public';
 
 const Header = () => {
   return (
-    <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+    <nav class="flex items-center justify-between flex-wrap bg-teal-600 p-6">
       <Link href="/" class="flex items-center flex-shrink-0 text-white mr-6">
         <Image src={logo} class="mr-3 w-[40px] h-[40px]" alt="" />
         <span class="font-semibold text-xl tracking-tight">Eval</span>

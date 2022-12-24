@@ -12,7 +12,7 @@ const CreateTest = () => {
     <>
       <Header />
 
-      <div class="place-items-center py-12 px-20 bg-blue-200">
+      <div class="place-items-center py-12 px-20">
         <h2 class="mb-6 text-4xl font-extrabold"> 
           Create new test
         </h2>

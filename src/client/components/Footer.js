@@ -4,7 +4,7 @@ import { logo } from '../public';
 
 const Footer = () => {
   return (    
-    <footer class="p-4 sm:p-4 bg-teal-500">
+    <footer class="p-4 sm:p-4 bg-teal-600">
       <div class="sm:flex sm:items-center sm:justify-between">
         <a href="#" class="flex items-center mb-4 sm:mb-0">
           <Image src={logo} class="mr-3 h-8 w-[40px] h-[40px]" alt="" />

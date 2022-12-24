@@ -1,22 +1,26 @@
-import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { Header, Footer } from '../../components';
-import { logo } from '../../public';
+import { Header, Footer, Loading } from '../../components';
 
 function Tests({ tests }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    <Loading />
+  }
+  
   return (
     <>
       <Header />
 
-      <div class="place-items-center py-12 px-20 bg-blue-200">
+      <div class="place-items-center py-12 px-20">
         <h2 class="mb-4 text-4xl font-extrabold"> 
           Tests 
         </h2>
         {/* {console.log(tests)} */}
         {tests.map((test) => (
           <Link key={test.id} href={`/tests/${encodeURIComponent(test.id)}`}>
-            <div class="flex items-center justify-between flex-wrap bg-white p-4 rounded-lg shadow-lg mb-3">
+            <div class="flex items-center justify-between flex-wrap bg-gray-100 p-4 rounded-lg shadow-lg mb-3">
               <div class="">
                 <h2 class="text-2xl font-bold mb-2 text-gray-800">{test.title}</h2>
                 <p class="text-gray-700">{test.description}</p>
