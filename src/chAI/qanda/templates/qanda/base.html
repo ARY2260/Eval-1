@@ -30,7 +30,7 @@
                 src="{% static 'images/logo.png' %}"
               /><b
                 class="relative leading-[120%] flex items-center w-[82px] h-[50px] shrink-0"
-                >chAI</b
+                >Eval</b
               >
 
             </div>
@@ -87,18 +87,18 @@
 
 	  {% block content %}
 	  {% endblock %}
-        <div
-          class="self-stretch flex flex-col items-center justify-start gap-[32px] text-sm"
-        >
-          <div class="self-stretch relative bg-black h-[1px] shrink-0"></div>
-          <div class="self-stretch flex flex-row items-start justify-between">
-            <div class="relative leading-[150%] inline-block">
-              Made with &lt;3 by Team chAI
-            </div>
-          </div>
+    <footer class="p-4 ">
+      <hr></hr>
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="#" class="flex items-center mb-4 sm:mb-0">
+          <Image src="{% static 'images/logo.png' %}" class="mr-3 h-8 w-[40px] h-[40px]" alt="" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap">Eval</span>
+        </a>
+        <span class="text-sm sm:text-center ">© 2022 Eval™. All Rights Reserved.</span>
+        <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
         </div>
       </div>
-    </div>
+    </footer>
 
   </body>
 </html>
