@@ -28,16 +28,15 @@ The overall process of evaluations causes **delays in declaration of results** a
     - We trained a custom classification model on Cohere using *Social Media Toxicity Dataset by SurgeAI* which gave a 98% precision on the test split.
 5. Custom Checks - this allows for users to give different weights to each of the three different metrics based on how important they are for the evaluation of the answer. This allows for a more personalized evaluation of the answer.
 
-
 <br>
 
 ## Built With
 * Cohere API
 * Scikit-learn
-* Flask
 * Django Rest Framework
-* ReactJS
+* NextJS
 * Tailwind CSS
+* Flask
 
 <br>
 
