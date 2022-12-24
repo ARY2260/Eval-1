@@ -3,10 +3,12 @@
 <img src="https://img.shields.io/github/license/MistaAsh/Eval"> <img src="https://img.shields.io/github/languages/top/MistaAsh/Eval"> <img src="https://img.shields.io/github/issues/MistaAsh/Eval"> <img src="https://img.shields.io/github/issues-pr/MistaAsh/Eval"> <img src="https://img.shields.io/github/last-commit/MistaAsh/Eval">
 
 <p align="center">
-    <img src="src/client/public/logo.png" />
+    <img src="./src/client/public/banner.png" />
 </p>
 
 This is Eval! A tool used to automate the  evaluation of test answers using Cohere powered APIs and scoring the answers based on suitable metrics.
+
+The REST API for the project is currently hosted on: https://replit.com/@AsimJawahir/CohereAPI
 
 <br>
 
@@ -30,6 +32,12 @@ The overall process of evaluations causes **delays in declaration of results** a
 
 <br>
 
+<p align="center">
+    <img src="./src/client/public/screenshot-1.png" />
+</p>
+
+<br>
+
 ## Built With
 * Cohere API
 * Scikit-learn
@@ -38,6 +46,12 @@ The overall process of evaluations causes **delays in declaration of results** a
 * Tailwind CSS
 * Flask
 
+<br>
+
+## References
+- Database Schema: https://dbdiagram.io/d/63879732bae3ed7c4543e0b1
+- Figma: https://www.figma.com/file/9xSF3sm9VhrWL3TJjzg22Y/Untitled?node-id=0%3A1&t=kRUjtBC1c4ot2wHS-1
+- Presentation: https://docs.google.com/presentation/d/1ZZz6VU6SPtiwoCv635J52lWzc1SG9zbq44IJe_BSRl4/edit#slide=id.g1c0dc6bdf95_0_29
 <br>
 
 ## Installation
