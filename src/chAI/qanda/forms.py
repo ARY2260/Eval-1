@@ -76,3 +76,12 @@ class AnswerSubmissionForm(forms.Form):
         )
 
 
+class Answer(forms.Form):
+    # CHOICES = ((1, 'Answer 1'),(2, 'Answer 2'),(3, 'Answer 3'),(4, 'Answer 4'),(5, 'Answer 5'))
+    # field = forms.ChoiceField(choices=CHOICES)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['answer'] = forms.ChoiceField(
+            choices=[('1', 'Answer 1'),('2', 'Answer 2'),('3', 'Answer 3'),('4', 'Answer 4'),('5', 'Answer 5')], # this is the function call
+            widget=forms.Select(attrs={'class': 'form-control [border:1px_solid_#000] bg-white self-stretch box-border flex flex-row items-center justify-start'})
+        )

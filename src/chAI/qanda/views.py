@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import QuestionSubmissionForm, AnswerSubmissionForm
+from .forms import QuestionSubmissionForm, AnswerSubmissionForm, Answer
 from .models import Tests
 import requests
 from datetime import datetime
@@ -58,6 +58,7 @@ def questionGET():
             questionDict = {
                 "question": item['question'],
                 "q_category": item['q_category'],
+                "totalMarks": item['totalMarks'],
             }
             questions.append(questionDict)
         return questions
@@ -79,6 +80,7 @@ def questionGETV2():
                 "answer3": item['answer3'],
                 "answer4": item['answer4'],
                 "answer5": item['answer5'],
+                "totalMarks": item['totalMarks'],
             }
             questions.append(questionDict)
         return questions
@@ -153,6 +155,7 @@ def test(request):
     return render(request, 'qanda/test.html', {'tests': tests, 'questions': questions})
 
 def questionBank(request):
+    form = Answer()
     questions = questionGETV2()
-    return render(request, 'qanda/questionBank.html', {'questions': questions})
+    return render(request, 'qanda/questionBank.html', {'questions': questions, 'form': form})
 # Create your views here.

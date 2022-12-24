@@ -17,7 +17,7 @@
                         <div class="">
                             <h2 class="text-2xl font-bold mb-2 text-gray-800">{{question.question}}</h2>
                             <p class="text-base text-gray-700">{{test.answer}}</p>
-                            <p class="text-sm text-gray-700">Score: {{test.score}}</p>
+                            <p class="text-sm text-gray-700">Score: {{test.score|stringformat:"s"|slice:"0:4"}}/{{question.totalMarks}}</p>
                             <p class="text-sm text-gray-700">Toxicity {{test.tag}}</p>
 
                         </div>
