@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import QuestionSubmissionForm, AnswerSubmissionForm
+from .models import Tests
 import requests
+from datetime import datetime
 
 
 def questionPOST(question, totalMarks, Answer1, Answer2, Answer3, Answer4, Answer5):
@@ -108,18 +110,27 @@ def answer(request):
             res = answerPOST(question, answer)
             score = res.get('score', 0)
             tag = res.get('tag', '')
-            return HttpResponseRedirect(f'/answer?submitted=True&score={score}&tag={tag}')
+            return HttpResponseRedirect(f'/answer?submitted=True&score={score}&tag={tag}&question={question}&answer={answer}')
     else:
         form = AnswerSubmissionForm()
         if 'submitted' in request.GET:
             submitted = True
             score = request.GET.get('score', 0)
-            tag = request.GET.get('tag', '')
-    
+            tag = request.GET.get('tag', 'Error')
+            question = request.GET.get('question', '')
+            answer = request.GET.get('answer', '')
+            # store it in the database model Tests if it is not already there
+            test = Tests.objects.filter(question=question, answer=answer)
+            if not test:
+                test = Tests(question=question, answer=answer, score=score, tag=tag, dateTime = datetime.now())
+                test.save()
     return render(request, 'qanda/answer.html', {'form': form, 'submitted': submitted, 'score': score, 'tag': tag})
 
 def test(request):
-    return render(request, 'qanda/test.html')
+    # pass model test
+    tests = Tests.objects.all()
+    questions = questionGET()
+    return render(request, 'qanda/test.html', {'tests': tests, 'questions': questions})
 
 def questionBank(request):
     questions = questionGET()

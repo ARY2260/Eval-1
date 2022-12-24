@@ -42,9 +42,11 @@ class="bg-white w-full overflow-hidden flex flex-col p-[112px_64px] box-border i
 	  class="[border:1px_solid_#000] bg-white font-roboto text-base self-stretch box-border h-[182px] shrink-0 flex flex-row p-[12px] items-start justify-start"
 	></textarea> -->
   </div>
+  {% if not submitted %}
   <div class="h-[20px]"></div>
   <input type="submit" value="Submit" class="cursor-pointer [border:1px_solid_#000] p-[12px_24px] bg-black box-border flex flex-row items-center justify-center text-white">
   </input>
+  {% endif %}
   </form>
 </div>
 <div

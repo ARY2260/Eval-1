@@ -726,10 +726,6 @@ select {
   margin-right: auto;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -804,22 +800,6 @@ select {
 
 .h-\[55px\] {
   height: 55px;
-}
-
-.h-\[24px\] {
-  height: 24px;
-}
-
-.h-\[30px\] {
-  height: 30px;
-}
-
-.h-full {
-  height: 100%;
-}
-
-.h-\[65px\] {
-  height: 65px;
 }
 
 .w-full {
@@ -1111,6 +1091,14 @@ select {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-\[100px\] {
+  font-size: 100px;
+}
+
+.text-\[40px\] {
+  font-size: 40px;
 }
 
 .font-extrabold {
