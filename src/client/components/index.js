@@ -3,6 +3,7 @@ import Footer from './Footer'
 import QuestionFormCard from './QuestionFormCard'
 import Loading from './Loading'
 import Technologies from './Technologies'
+import QuestionDetailCard from './QuestionDetailCard'
 
 export {
   Header,
@@ -10,4 +11,5 @@ export {
   QuestionFormCard,
   Loading,
   Technologies,
+  QuestionDetailCard,
 };

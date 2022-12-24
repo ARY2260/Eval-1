@@ -28,7 +28,7 @@ class Question(models.Model):
     """
     test_id = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name=_("Test"), help_text=_("Required"))
     question_text = models.TextField(verbose_name=_("Question"), help_text=_("Required"), max_length=500)
-    expected_answer = models.TextField(verbose_name=_("Expected Answer"), help_text=_("Required"), max_length=500)
+    expected_answer = models.TextField(verbose_name=_("Expected Answer"), help_text=_("Required"), max_length=5000)
     max_score = models.DecimalField(
         verbose_name=_("Max Score"), 
         help_text=_("Maximum 999.99"), 
